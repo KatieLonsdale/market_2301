@@ -28,7 +28,7 @@ class Market
   end
 
   def total_inventory
-    total_inventory = Hash.new {|h,k| h[k] = {quantity: 0, vendors: []}}
+    total_inventory = Hash.new {|h,k| h[k] = {quantity: 0}}
     @vendors.map do |vendor|
       vendor.inventory.each do |item, quantity|
         total_inventory[item] if !total_inventory.key?(item)
