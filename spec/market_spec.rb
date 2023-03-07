@@ -28,7 +28,7 @@ RSpec.describe Market do
   end
 
   describe '#add_vendor' do
-    xit 'adds a vendor to vendors array' do
+    it 'adds a vendor to vendors array' do
       @market.add_vendor(@vendor1)    
       @market.add_vendor(@vendor2)    
       @market.add_vendor(@vendor3)
