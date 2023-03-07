@@ -10,4 +10,8 @@ class Vendor
     in_stock = @inventory.key(item)
     in_stock == nil ? 0 : in_stock
   end
+
+  def stock(item, quantity)
+    @inventory[item] = quantity
+  end
 end
