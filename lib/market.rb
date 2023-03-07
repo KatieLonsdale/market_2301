@@ -29,15 +29,10 @@ class Market
 
   def total_inventory
     total_inventory = Hash.new {|h,k| h[k] = {quantity: 0, vendors: []}}
-    @vendors.map do |vendor| 
+    @vendors.map do |vendor|
       vendor.inventory.each do |item, quantity|
-        if !total_inventory.key?(item)
-          total_inventory[item]
-          @vendors.each do |vendor|
-            total_inventory[item][:quantity]+= vendor.check_stock(item)
-          end
-        else
-        end
+        total_inventory[item] if !total_inventory.key?(item)
+        total_inventory[item][:quantity]+= vendor.check_stock(item)
         total_inventory[item][:vendors] = vendors_that_sell(item)
       end
     end
