@@ -7,7 +7,7 @@ class Vendor
   end
 
   def check_stock(item)
-    in_stock = @inventory.key(item)
+    in_stock = @inventory[item]
     in_stock == nil ? 0 : in_stock
   end
 
