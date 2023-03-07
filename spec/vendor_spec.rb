@@ -19,6 +19,10 @@ RSpec.describe Vendor do
   describe '#check_stock' do
     it 'returns number of given items in stock' do
       expect(@vendor.check_stock(@item1)).to eq 0
+      
+      @vendor.stock(@item1, 30)
+      
+      expect(@vendor.check_stock(@item1)).to eq 30
     end
   end
 
