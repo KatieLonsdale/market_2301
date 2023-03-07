@@ -14,4 +14,11 @@ class Vendor
   def stock(item, quantity)
     @inventory[item] += quantity
   end
+
+  def potential_revenue
+    potential_revenue_by_item = @inventory.transform_values do |value| 
+      @inventory.key(value).price * value
+    end
+    potential_revenue_by_item.values.sum
+  end
 end
