@@ -70,4 +70,29 @@ RSpec.describe Market do
     end
   end
 
+  describe '#total_inventory' do
+    it 'returns quantities of all items sold at the market' do
+      @market.add_vendor(@vendor1)    
+      @market.add_vendor(@vendor2)    
+      @market.add_vendor(@vendor3)
+
+      return_hash = {@item1 => {quantity: 100, vendors: [@vendor1, @vendor3]},
+      @item2 => {quantity: 7, vendors: [@vendor1]},
+      @item3 => {quantity: 25, vendors: [@vendor2]},
+      @item4 => {quantity: 50, vendors: [@vendor2]}}
+
+      expect(@market.total_inventory).to eq(return_hash)
+    end
+  end
+
+  describe '#overstocked_items' do
+    it 'returns true if item is sold by more than 1 vendor and there are more than 50' do
+      @market.add_vendor(@vendor1)    
+      @market.add_vendor(@vendor2)    
+      @market.add_vendor(@vendor3)
+
+      expect(@market.overstocked_items).to eq([@item1])
+    end
+  end
+
 end
